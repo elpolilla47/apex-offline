@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es-UY" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#16111f" />
+  <meta name="description" content="Apex: metas personales y finanzas para arrancar de cero. 100% offline." />
+  <title>Apex</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2EyYTVlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYxMTFmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjE1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGEzYTZlIiBzdHJva2Utd2lkdGg9IjI4Ii8+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmNmI2YiIgc3Ryb2tlLXdpZHRoPSIyOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSI3MDciIHN0cm9rZS1kYXNob2Zmc2V0PSIyMTIiIHRyYW5zZm9ybT0icm90YXRlKC05MCAyNTYgMjU2KSIvPjxwYXRoIGQ9Ik0xOTIgMjU4IGw0NCA0NCBsOTIgLTEwNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZkOTNkIiBzdHJva2Utd2lkdGg9IjMyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=" />
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2EyYTVlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYxMTFmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjE1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGEzYTZlIiBzdHJva2Utd2lkdGg9IjI4Ii8+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmNmI2YiIgc3Ryb2tlLXdpZHRoPSIyOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSI3MDciIHN0cm9rZS1kYXNob2Zmc2V0PSIyMTIiIHRyYW5zZm9ybT0icm90YXRlKC05MCAyNTYgMjU2KSIvPjxwYXRoIGQ9Ik0xOTIgMjU4IGw0NCA0NCBsOTIgLTEwNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZkOTNkIiBzdHJva2Utd2lkdGg9IjMyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="vendor/outfit.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Aplicamos el tema antes del primer pintado para evitar parpadeo.
+    (function () {
+      try {
+        var raw = localStorage.getItem("app_v1");
+        if (raw) {
+          var t = JSON.parse(raw).theme;
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="appbar">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 512 512" width="28" height="28">
+          <rect width="512" height="512" rx="120" fill="var(--brand-bg)" />
+          <circle cx="256" cy="256" r="150" fill="none" stroke="var(--track)" stroke-width="30" />
+          <circle cx="256" cy="256" r="150" fill="none" stroke="var(--coral)" stroke-width="30" stroke-linecap="round" stroke-dasharray="707" stroke-dashoffset="212" transform="rotate(-90 256 256)" />
+          <path d="M192 258 l44 44 l92 -104" fill="none" stroke="var(--gold)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h1>Ape<span class="brand-amp">x</span></h1>
+    </div>
+    <div class="appbar-actions">
+      <button id="themeBtn" class="icon-btn" type="button" title="Cambiar tema" aria-label="Cambiar tema claro/oscuro">
+        <span class="theme-emoji" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+      </button>
+      <button id="menuBtn" class="icon-btn" type="button" title="Datos" aria-label="Menú de datos" aria-haspopup="true" aria-expanded="false">⋯</button>
+      <div id="menu" class="menu" hidden role="menu">
+        <button type="button" data-action="notif" role="menuitem"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg> Recordatorios</button>
+        <button type="button" data-action="export" role="menuitem"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> Exportar datos</button>
+        <button type="button" data-action="import" role="menuitem"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg> Importar datos</button>
+        <button type="button" data-action="seed" role="menuitem"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Cargar datos de ejemplo</button>
+        <button type="button" data-action="wipe" role="menuitem" class="danger"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg> Borrar todo</button>
+      </div>
+      <input id="importFile" type="file" accept="application/json,.json" hidden />
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Secciones">
+    <button class="tab" role="tab" data-tab="metas" aria-selected="true">
+      <span class="tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="tab-txt">Metas</span>
+    </button>
+    <button class="tab" role="tab" data-tab="finanzas" aria-selected="false">
+      <span class="tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></span><span class="tab-txt">Finanzas</span>
+    </button>
+    <button class="tab" role="tab" data-tab="calc" aria-selected="false">
+      <span class="tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="3"/><line x1="8" x2="16" y1="6.5" y2="6.5"/><path d="M8 11h.01"/><path d="M12 11h.01"/><path d="M16 11h.01"/><path d="M8 15h.01"/><path d="M12 15h.01"/><path d="M16 15h.01"/><path d="M8 19h.01"/><path d="M12 19h.01"/><path d="M16 19h.01"/></svg></span><span class="tab-txt">Calculadoras</span>
+    </button>
+  </nav>
+
+  <main id="main">
+    <section id="panel-metas" class="panel" role="tabpanel" aria-label="Metas"></section>
+    <section id="panel-finanzas" class="panel" role="tabpanel" aria-label="Finanzas" hidden></section>
+    <section id="panel-calc" class="panel" role="tabpanel" aria-label="Calculadoras" hidden></section>
+  </main>
+
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="vendor/confetti.browser.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
