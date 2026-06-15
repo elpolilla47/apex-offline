@@ -175,8 +175,8 @@
         ]
       }),
       normalizeGoal({
-        id: uid(), title: "Leer", icon: "book", color: "#b088f9",
-        period: "mensual", type: "numerica", unit: "libros", target: 2, current: 1, order: 2
+        id: uid(), title: "Dormir", icon: "moon", color: "#b088f9",
+        period: "diaria", type: "numerica", unit: "horas de nonis", target: 8, current: 6, order: 2
       })
     ];
     s.finance.salary = 35000;

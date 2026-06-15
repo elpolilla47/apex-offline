@@ -1,5 +1,5 @@
 /* Service worker: cachea el shell completo para funcionar 100% offline. */
-const CACHE = "apex-v8";
+const CACHE = "apex-v9";
 const ASSETS = [
   "./",
   "./index.html",
